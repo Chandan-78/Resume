@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alex Morgan – Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #eef2f6;
+    --panel: #14213d;
+    --panel-text: #e8edf5;
+    --ink: #1c2430;
+    --muted: #5b6678;
+    --accent: #2f5bea;
+    --line: #d3dae4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: Inter, system-ui, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+  .layout { display: grid; grid-template-columns: 340px 1fr; min-height: 100vh; }
+
+  /* Sidebar */
+  aside { background: var(--panel); color: var(--panel-text); padding: 56px 36px; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+  .avatar { width: 96px; height: 96px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; font: 800 2rem Fraunces, serif; color: #fff; margin-bottom: 24px; }
+  aside h1 { font: 800 2.2rem/1.1 Fraunces, serif; margin-bottom: 8px; }
+  aside .title { color: #a9b7d0; margin-bottom: 32px; }
+  aside h2 { font-size: .95rem; font-weight: 600; color: #a9b7d0; margin: 28px 0 10px; }
+  aside ul { list-style: none; }
+  aside li { margin-bottom: 8px; font-size: .95rem; }
+  aside a { text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.3); }
+  aside a:hover { border-color: #fff; }
+  .skills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skills span { background: rgba(255,255,255,.1); padding: 4px 12px; border-radius: 999px; font-size: .85rem; }
+  .btn { display: inline-block; margin-top: 32px; background: var(--accent); color: #fff; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; border: 0; }
+  .btn:hover { background: #4170ff; }
+
+  /* Main */
+  main { padding: 64px min(6vw, 80px); max-width: 880px; }
+  section { margin-bottom: 56px; }
+  section > h2 { font: 800 1.7rem Fraunces, serif; margin-bottom: 24px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); display: inline-block; }
+  .summary { font-size: 1.1rem; color: var(--muted); max-width: 62ch; }
+
+  /* Timeline entries */
+  .entry { display: grid; grid-template-columns: 150px 1fr; gap: 24px; padding: 20px 0; border-top: 1px solid var(--line); }
+  .entry:first-of-type { border-top: 0; }
+  .entry .when { color: var(--muted); font-size: .9rem; }
+  .entry h3 { font-size: 1.1rem; }
+  .entry .where { color: var(--accent); font-weight: 500; margin-bottom: 8px; }
+  .entry ul { padding-left: 18px; color: var(--muted); }
+  .entry li { margin-bottom: 4px; }
+
+  /* Projects */
+  .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+  .project { background: #fff; border-left: 4px solid var(--accent); padding: 20px; border-radius: 4px; }
+  .project h3 { margin-bottom: 6px; }
+  .project p { color: var(--muted); font-size: .95rem; margin-bottom: 10px; }
+  .project a { color: var(--accent); font-weight: 600; text-decoration: none; }
+  .project a:hover { text-decoration: underline; }
+
+  footer { color: var(--muted); font-size: .85rem; padding-top: 24px; border-top: 1px solid var(--line); }
+
+  @media (max-width: 860px) {
+    .layout { grid-template-columns: 1fr; }
+    aside { position: static; height: auto; padding: 40px 24px; }
+    main { padding: 40px 24px; }
+    .entry { grid-template-columns: 1fr; gap: 4px; }
+  }
+  @media print {
+    aside { position: static; height: auto; }
+    .btn { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+  <aside>
+    <div class="avatar" id="initials"></div>
+    <h1 id="name"></h1>
+    <p class="title" id="role"></p>
+
+    <h2>Contact</h2>
+    <ul id="contact"></ul>
+
+    <h2>Skills</h2>
+    <div class="skills" id="skills"></div>
+
+    <h2>Languages</h2>
+    <ul id="languages"></ul>
+
+    <button class="btn" onclick="window.print()">Download as PDF</button>
+  </aside>
+
+  <main>
+    <section>
+      <h2>About</h2>
+      <p class="summary" id="summary"></p>
+    </section>
+
+    <section>
+      <h2>Experience</h2>
+      <div id="experience"></div>
+    </section>
+
+    <section>
+      <h2>Projects</h2>
+      <div class="projects" id="projects"></div>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <div id="education"></div>
+    </section>
+
+    <footer id="footer"></footer>
+  </main>
+</div>
+
+<script>
+/* ============================================================
+   EDIT YOUR RESUME HERE – everything below is sample data.
+   Change the text, add or remove items; the page updates itself.
+   ============================================================ */
+const resume = {
+  name: "Alex Morgan",
+  role: "Full-Stack Web Developer",
+  summary:
+    "Developer with 5 years of experience building fast, accessible web applications. I enjoy turning messy problems into simple tools, and I work well with designers, product managers and customers.",
+
+  contact: [
+    { label: "alex.morgan@example.com", href: "mailto:alex.morgan@example.com" },
+    { label: "+977 98XXXXXXXX", href: "tel:+97798XXXXXXXX" },
+    { label: "Kathmandu, Nepal" },
+    { label: "linkedin.com/in/alexmorgan", href: "https://linkedin.com/in/alexmorgan" },
+    { label: "github.com/alexmorgan", href: "https://github.com/alexmorgan" }
+  ],
+
+  skills: ["JavaScript", "TypeScript", "React", "Node.js", "Python", "SQL", "Git", "Figma"],
+
+  languages: ["English – fluent", "Nepali – native", "Hindi – conversational"],
+
+  experience: [
+    {
+      when: "2023 – Present",
+      title: "Senior Web Developer",
+      where: "Brightpath Technologies",
+      points: [
+        "Led a team of 4 to rebuild the customer dashboard, cutting load time by 40%.",
+        "Introduced automated testing that reduced production bugs by 30%.",
+        "Mentored 3 junior developers."
+      ]
+    },
+    {
+      when: "2021 – 2023",
+      title: "Web Developer",
+      where: "Lumen Digital Agency",
+      points: [
+        "Built and launched 12 client websites using React and Node.js.",
+        "Improved site accessibility to meet WCAG 2.1 AA standards."
+      ]
+    },
+    {
+      when: "2019 – 2021",
+      title: "Junior Developer (Intern)",
+      where: "Northwind Software",
+      points: [
+        "Fixed bugs and built small features for an internal inventory tool.",
+        "Wrote documentation used to onboard new team members."
+      ]
+    }
+  ],
+
+  projects: [
+    { name: "TaskNest", text: "A simple to-do and team planning app used by 2,000+ people.", link: "https://example.com/tasknest", linkText: "View project" },
+    { name: "TrailBuddy", text: "Mobile-friendly website that maps hiking trails with live weather.", link: "https://example.com/trailbuddy", linkText: "View project" },
+    { name: "BudgetBee", text: "Open-source expense tracker with charts and CSV export.", link: "https://github.com/alexmorgan/budgetbee", linkText: "View code" }
+  ],
+
+  education: [
+    {
+      when: "2015 – 2019",
+      title: "B.Sc. in Computer Science",
+      where: "Sample University",
+      points: ["Graduated with distinction.", "Final-year project: a school attendance system."]
+    }
+  ],
+
+  footer: "Available for freelance and full-time roles. References on request."
+};
+
+/* ---------- Rendering code (you don't need to edit below) ---------- */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+document.title = resume.name + " – Resume";
+$("name").textContent = resume.name;
+$("role").textContent = resume.role;
+$("summary").textContent = resume.summary;
+$("footer").textContent = resume.footer;
+$("initials").textContent = resume.name.split(" ").map(w => w[0]).slice(0, 2).join("").toUpperCase();
+
+$("contact").innerHTML = resume.contact
+  .map(c => `<li>${c.href ? `<a href="${esc(c.href)}">${esc(c.label)}</a>` : esc(c.label)}</li>`).join("");
+$("skills").innerHTML = resume.skills.map(s => `<span>${esc(s)}</span>`).join("");
+$("languages").innerHTML = resume.languages.map(l => `<li>${esc(l)}</li>`).join("");
+
+const entryHTML = e => `
+  <div class="entry">
+    <div class="when">${esc(e.when)}</div>
+    <div>
+      <h3>${esc(e.title)}</h3>
+      <div class="where">${esc(e.where)}</div>
+      <ul>${e.points.map(p => `<li>${esc(p)}</li>`).join("")}</ul>
+    </div>
+  </div>`;
+$("experience").innerHTML = resume.experience.map(entryHTML).join("");
+$("education").innerHTML = resume.education.map(entryHTML).join("");
+
+$("projects").innerHTML = resume.projects.map(p => `
+  <div class="project">
+    <h3>${esc(p.name)}</h3>
+    <p>${esc(p.text)}</p>
+    <a href="${esc(p.link)}">${esc(p.linkText)}</a>
+  </div>`).join("");
+</script>
+</body>
+</html>
