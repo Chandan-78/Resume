@@ -1,231 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Alex Morgan – Resume</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- EDIT: title + description (used by Google and social previews) -->
+<title>Chandan Pandit | Engineer, Teacher, Founder</title>
+<meta name="description" content="Electronics and communication engineer turned teacher and founder of Mindmile Academyand Opal Digital.">
+<meta property="og:title" content="Chandan Pandit | Engineer, Teacher, Founder">
+<meta property="og:description" content="Electronics and communication engineer turned teacher and founder.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F6F7F9">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232F5BFF'/%3E%3Ctext x='50' y='68' font-size='56' font-family='sans-serif' font-weight='700' text-anchor='middle' fill='white'%3EY%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
 <style>
-  :root {
-    --bg: #eef2f6;
-    --panel: #14213d;
-    --panel-text: #e8edf5;
-    --ink: #1c2430;
-    --muted: #5b6678;
-    --accent: #2f5bea;
-    --line: #d3dae4;
+:root{
+  --bg:#F6F7F9; --surface:#FFFFFF; --ink:#101828; --muted:#5B6577;
+  --line:#DDE3EC; --accent:#2F5BFF; --accent-ink:#FFFFFF; --grid:rgba(47,91,255,.07);
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --radius:14px; --wrap:1080px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1420; --surface:#151D2C; --ink:#EEF2F8; --muted:#9AA6BA;
+    --line:#26324A; --accent:#7C9BFF; --accent-ink:#0E1420; --grid:rgba(124,155,255,.08);
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { font-family: Inter, system-ui, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; }
-  a { color: inherit; }
-  :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1420; --surface:#151D2C; --ink:#EEF2F8; --muted:#9AA6BA;
+  --line:#26324A; --accent:#7C9BFF; --accent-ink:#0E1420; --grid:rgba(124,155,255,.08);
+}
 
-  .layout { display: grid; grid-template-columns: 340px 1fr; min-height: 100vh; }
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:1.0625rem;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--display);line-height:1.1;letter-spacing:-.02em}
 
-  /* Sidebar */
-  aside { background: var(--panel); color: var(--panel-text); padding: 56px 36px; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
-  .avatar { width: 96px; height: 96px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; font: 800 2rem Fraunces, serif; color: #fff; margin-bottom: 24px; }
-  aside h1 { font: 800 2.2rem/1.1 Fraunces, serif; margin-bottom: 8px; }
-  aside .title { color: #a9b7d0; margin-bottom: 32px; }
-  aside h2 { font-size: .95rem; font-weight: 600; color: #a9b7d0; margin: 28px 0 10px; }
-  aside ul { list-style: none; }
-  aside li { margin-bottom: 8px; font-size: .95rem; }
-  aside a { text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.3); }
-  aside a:hover { border-color: #fff; }
-  .skills { display: flex; flex-wrap: wrap; gap: 8px; }
-  .skills span { background: rgba(255,255,255,.1); padding: 4px 12px; border-radius: 999px; font-size: .85rem; }
-  .btn { display: inline-block; margin-top: 32px; background: var(--accent); color: #fff; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; border: 0; }
-  .btn:hover { background: #4170ff; }
+/* Header */
+header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:var(--display);font-weight:700;font-size:1.15rem;text-decoration:none}
+nav{display:flex;align-items:center;gap:26px}
+nav a{text-decoration:none;color:var(--muted);font-size:.95rem;font-weight:500;transition:color .2s}
+nav a:hover{color:var(--ink)}
+#theme{background:none;border:1px solid var(--line);color:var(--ink);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:1rem}
+#theme:hover{border-color:var(--accent)}
 
-  /* Main */
-  main { padding: 64px min(6vw, 80px); max-width: 880px; }
-  section { margin-bottom: 56px; }
-  section > h2 { font: 800 1.7rem Fraunces, serif; margin-bottom: 24px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); display: inline-block; }
-  .summary { font-size: 1.1rem; color: var(--muted); max-width: 62ch; }
+/* Hero: blueprint grid fades out */
+.hero{padding:120px 0 96px;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:44px 44px;-webkit-mask-image:linear-gradient(#000 70%,transparent);mask-image:linear-gradient(#000 70%,transparent)}
+.hero-in{position:relative}
+.hero h1{font-size:clamp(2.6rem,7.5vw,5.4rem);font-weight:700;max-width:14ch}
+.hero p{margin-top:28px;max-width:56ch;font-size:1.2rem;color:var(--muted)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.btn{display:inline-block;padding:13px 24px;border-radius:999px;font-weight:600;font-size:.97rem;text-decoration:none;border:1px solid var(--line);transition:transform .2s,border-color .2s}
+.btn:hover{transform:translateY(-2px);border-color:var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.hero h1,.hero p,.cta{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.hero p{animation-delay:.12s}.cta{animation-delay:.22s}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 
-  /* Timeline entries */
-  .entry { display: grid; grid-template-columns: 150px 1fr; gap: 24px; padding: 20px 0; border-top: 1px solid var(--line); }
-  .entry:first-of-type { border-top: 0; }
-  .entry .when { color: var(--muted); font-size: .9rem; }
-  .entry h3 { font-size: 1.1rem; }
-  .entry .where { color: var(--accent); font-weight: 500; margin-bottom: 8px; }
-  .entry ul { padding-left: 18px; color: var(--muted); }
-  .entry li { margin-bottom: 4px; }
+/* Sections */
+section{padding:88px 0;border-top:1px solid var(--line)}
+.sec-title{font-size:clamp(1.8rem,4vw,2.5rem);margin-bottom:12px}
+.sec-sub{color:var(--muted);max-width:58ch;margin-bottom:44px}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.about p+p{margin-top:18px}
+.about p{color:var(--muted)}
+.about p:first-child{color:var(--ink);font-size:1.2rem}
 
-  /* Projects */
-  .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-  .project { background: #fff; border-left: 4px solid var(--accent); padding: 20px; border-radius: 4px; }
-  .project h3 { margin-bottom: 6px; }
-  .project p { color: var(--muted); font-size: .95rem; margin-bottom: 10px; }
-  .project a { color: var(--accent); font-weight: 600; text-decoration: none; }
-  .project a:hover { text-decoration: underline; }
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:30px}
+.card h3{font-size:1.35rem;margin-bottom:10px}
+.card p{color:var(--muted);font-size:1rem}
+.card a.link{display:inline-block;margin-top:18px;font-weight:600;color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
+.card a.link:hover{border-color:var(--accent)}
+.company .tag{display:inline-block;font-size:.85rem;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 12px;margin-bottom:16px}
 
-  footer { color: var(--muted); font-size: .85rem; padding-top: 24px; border-top: 1px solid var(--line); }
+.skills{display:flex;flex-wrap:wrap;gap:10px}
+.skills span{background:var(--surface);border:1px solid var(--line);padding:9px 18px;border-radius:999px;font-size:.95rem;font-weight:500}
 
-  @media (max-width: 860px) {
-    .layout { grid-template-columns: 1fr; }
-    aside { position: static; height: auto; padding: 40px 24px; }
-    main { padding: 40px 24px; }
-    .entry { grid-template-columns: 1fr; gap: 4px; }
-  }
-  @media print {
-    aside { position: static; height: auto; }
-    .btn { display: none; }
-  }
+.timeline{border-left:2px solid var(--line);padding-left:28px;display:grid;gap:30px}
+.timeline div{position:relative}
+.timeline div::before{content:"";position:absolute;left:-36px;top:9px;width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.timeline time{font-size:.9rem;color:var(--muted)}
+.timeline h3{font-size:1.2rem;margin:2px 0 4px}
+.timeline p{color:var(--muted)}
+
+/* Contact */
+.contact{text-align:center}
+.contact h2{font-size:clamp(2rem,5vw,3.2rem);max-width:18ch;margin:0 auto 18px}
+.contact p{color:var(--muted);margin-bottom:30px}
+.mail{font-family:var(--display);font-size:clamp(1.3rem,3.5vw,2rem);font-weight:500;text-decoration:none;border-bottom:2px solid var(--accent)}
+.social{display:flex;justify-content:center;flex-wrap:wrap;gap:22px;margin-top:34px}
+.social a{color:var(--muted);text-decoration:none;font-weight:500}
+.social a:hover{color:var(--accent)}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:.9rem;text-align:center}
+
+@media (max-width:760px){
+  .about{grid-template-columns:1fr;gap:24px}
+  nav a.hide-m{display:none}
+  .hero{padding:80px 0 64px}
+  section{padding:64px 0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation:none!important;transition:none!important}
+}
 </style>
 </head>
+
 <body>
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#top">Chandan Pandit</a>
+    <nav aria-label="Main">
+      <a class="hide-m" href="#about">About</a>
+      <a class="hide-m" href="#companies">Companies</a>
+      <a class="hide-m" href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+      <button id="theme" aria-label="Toggle dark mode" title="Toggle dark mode">◐</button>
+    </nav>
+  </div>
+</header>
 
-<div class="layout">
-  <aside>
-    <div class="avatar" id="initials"></div>
-    <h1 id="name"></h1>
-    <p class="title" id="role"></p>
+<main id="top">
 
-    <h2>Contact</h2>
-    <ul id="contact"></ul>
-
-    <h2>Skills</h2>
-    <div class="skills" id="skills"></div>
-
-    <h2>Languages</h2>
-    <ul id="languages"></ul>
-
-    <button class="btn" onclick="window.print()">Download as PDF</button>
-  </aside>
-
-  <main>
-    <section>
-      <h2>About</h2>
-      <p class="summary" id="summary"></p>
-    </section>
-
-    <section>
-      <h2>Experience</h2>
-      <div id="experience"></div>
-    </section>
-
-    <section>
-      <h2>Projects</h2>
-      <div class="projects" id="projects"></div>
-    </section>
-
-    <section>
-      <h2>Education</h2>
-      <div id="education"></div>
-    </section>
-
-    <footer id="footer"></footer>
-  </main>
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap hero-in">
+    <h1>Engineer by training. Builder by choice.</h1>
+    <!-- EDIT: one clear sentence about you -->
+    <p>I studied Electronics, Communication and IT, then moved into teaching and business. I now run two companies and help students think clearly about technology.</p>
+    <div class="cta">
+      <a class="btn primary" href="#companies">See my companies</a>
+      <a class="btn" href="#contact">Get in touch</a>
+    </div>
+  </div>
 </div>
 
-<script>
-/* ============================================================
-   EDIT YOUR RESUME HERE – everything below is sample data.
-   Change the text, add or remove items; the page updates itself.
-   ============================================================ */
-const resume = {
-  name: "Alex Morgan",
-  role: "Full-Stack Web Developer",
-  summary:
-    "Developer with 5 years of experience building fast, accessible web applications. I enjoy turning messy problems into simple tools, and I work well with designers, product managers and customers.",
-
-  contact: [
-    { label: "alex.morgan@example.com", href: "mailto:alex.morgan@example.com" },
-    { label: "+977 98XXXXXXXX", href: "tel:+97798XXXXXXXX" },
-    { label: "Kathmandu, Nepal" },
-    { label: "linkedin.com/in/alexmorgan", href: "https://linkedin.com/in/alexmorgan" },
-    { label: "github.com/alexmorgan", href: "https://github.com/alexmorgan" }
-  ],
-
-  skills: ["JavaScript", "TypeScript", "React", "Node.js", "Python", "SQL", "Git", "Figma"],
-
-  languages: ["English – fluent", "Nepali – native", "Hindi – conversational"],
-
-  experience: [
-    {
-      when: "2023 – Present",
-      title: "Senior Web Developer",
-      where: "Brightpath Technologies",
-      points: [
-        "Led a team of 4 to rebuild the customer dashboard, cutting load time by 40%.",
-        "Introduced automated testing that reduced production bugs by 30%.",
-        "Mentored 3 junior developers."
-      ]
-    },
-    {
-      when: "2021 – 2023",
-      title: "Web Developer",
-      where: "Lumen Digital Agency",
-      points: [
-        "Built and launched 12 client websites using React and Node.js.",
-        "Improved site accessibility to meet WCAG 2.1 AA standards."
-      ]
-    },
-    {
-      when: "2019 – 2021",
-      title: "Junior Developer (Intern)",
-      where: "Northwind Software",
-      points: [
-        "Fixed bugs and built small features for an internal inventory tool.",
-        "Wrote documentation used to onboard new team members."
-      ]
-    }
-  ],
-
-  projects: [
-    { name: "TaskNest", text: "A simple to-do and team planning app used by 2,000+ people.", link: "https://example.com/tasknest", linkText: "View project" },
-    { name: "TrailBuddy", text: "Mobile-friendly website that maps hiking trails with live weather.", link: "https://example.com/trailbuddy", linkText: "View project" },
-    { name: "BudgetBee", text: "Open-source expense tracker with charts and CSV export.", link: "https://github.com/alexmorgan/budgetbee", linkText: "View code" }
-  ],
-
-  education: [
-    {
-      when: "2015 – 2019",
-      title: "B.Sc. in Computer Science",
-      where: "Sample University",
-      points: ["Graduated with distinction.", "Final-year project: a school attendance system."]
-    }
-  ],
-
-  footer: "Available for freelance and full-time roles. References on request."
-};
-
-/* ---------- Rendering code (you don't need to edit below) ---------- */
-const $ = id => document.getElementById(id);
-const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-
-document.title = resume.name + " – Resume";
-$("name").textContent = resume.name;
-$("role").textContent = resume.role;
-$("summary").textContent = resume.summary;
-$("footer").textContent = resume.footer;
-$("initials").textContent = resume.name.split(" ").map(w => w[0]).slice(0, 2).join("").toUpperCase();
-
-$("contact").innerHTML = resume.contact
-  .map(c => `<li>${c.href ? `<a href="${esc(c.href)}">${esc(c.label)}</a>` : esc(c.label)}</li>`).join("");
-$("skills").innerHTML = resume.skills.map(s => `<span>${esc(s)}</span>`).join("");
-$("languages").innerHTML = resume.languages.map(l => `<li>${esc(l)}</li>`).join("");
-
-const entryHTML = e => `
-  <div class="entry">
-    <div class="when">${esc(e.when)}</div>
-    <div>
-      <h3>${esc(e.title)}</h3>
-      <div class="where">${esc(e.where)}</div>
-      <ul>${e.points.map(p => `<li>${esc(p)}</li>`).join("")}</ul>
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <h2 class="sec-title">About me</h2>
+    <div class="about">
+      <div>
+        <!-- EDIT: your story -->
+        <p>I began with circuits, signals and code. Today I spend my time teaching, building teams and running businesses.</p>
+      </div>
+      <div>
+        <p>My foundation is in C and C++, operating systems and mathematics. That training taught me to break big problems into small, testable parts, and I use the same approach in teaching and in business.</p>
+        <p>I believe good education and good products share one rule: make the complex feel simple.</p>
+      </div>
     </div>
-  </div>`;
-$("experience").innerHTML = resume.experience.map(entryHTML).join("");
-$("education").innerHTML = resume.education.map(entryHTML).join("");
+  </div>
+</section>
 
-$("projects").innerHTML = resume.projects.map(p => `
-  <div class="project">
-    <h3>${esc(p.name)}</h3>
-    <p>${esc(p.text)}</p>
-    <a href="${esc(p.link)}">${esc(p.linkText)}</a>
-  </div>`).join("");
+<!-- WHAT I DO -->
+<section>
+  <div class="wrap">
+    <h2 class="sec-title">What I do</h2>
+    <p class="sec-sub">Three roles, one habit of mind: understand the system, then make it useful.</p>
+    <div class="grid">
+      <article class="card">
+        <h3>Teach</h3>
+        <p>Programming, operating systems and mathematics, explained from first principles with real examples.</p>
+      </article>
+      <article class="card">
+        <h3>Build</h3>
+        <p>Software and systems built with clean C/C++ foundations and version control through GitHub.</p>
+      </article>
+      <article class="card">
+        <h3>Lead</h3>
+        <p>Founding and growing companies with clear goals, small teams and steady execution.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- COMPANIES -->
+<section id="companies">
+  <div class="wrap">
+    <h2 class="sec-title">My companies</h2>
+    <p class="sec-sub">Two ventures, each solving a specific problem.</p>
+    <div class="grid">
+      <!-- EDIT: Company X -->
+      <article class="card company">
+        <span class="tag">Founder, since 2025</span>
+        <h3>Mindmile Academy</h3>
+        <p>Mindmile academy is an emerging educational platform where we provide entrance classes and tuition classes.</p>
+        <a class="link" href="https://mindmile.odoo.com" target="_blank" rel="noopener">Mindmile Academy</a>
+      </article>
+      <!-- EDIT: Company Y -->
+      <article class="card company">
+        <span class="tag">Founder, since 2025</span>
+        <h3>Opal Digital</h3>
+        <p>We provide digital solutions necessary for business.</p>
+        <a class="link" href=" " target="_blank" rel="noopener">Opal Digital</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <h2 class="sec-title">Skills</h2>
+    <p class="sec-sub">The tools I think and work with.</p>
+    <!-- EDIT: add or remove skills -->
+    <div class="skills">
+      <span>C</span><span>C++</span><span>Operating Systems</span><span>Mathematics</span>
+      <span>Git and GitHub</span><span>Electronics</span><span>Communication Systems</span>
+      <span>Teaching</span><span>Business Strategy</span>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section>
+  <div class="wrap">
+    <h2 class="sec-title">Journey</h2>
+    <p class="sec-sub">A short timeline. Replace with your own milestones.</p>
+    <div class="timeline">
+      <div><time>2025</time><h3>Founded Opal Digital</h3><p>Started Agency to help growing business.</p></div>
+      <div><time>2025</time><h3>Founded Mindmile Academy</h3><p>Started a Educational platform for entrance preparation.</p></div>
+      <div><time>2025</time><h3>Started teaching</h3><p>Started teaching Mathematics.</p></div>
+      <div><time>2024</time><h3>B.E. Electronics, Communication and IT</h3><p>Thapathali college of engineering</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2>Let's build something useful.</h2>
+    <p>For teaching, partnerships or ideas, send me an email.</p>
+    <a class="mail" href="chandan7kp@gmail.com">Gmail</a>
+    <!-- EDIT: social links -->
+    <div class="social">
+      <a href="https://github.com/yourname" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/yourname" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://youtube.com/@yourname" target="_blank" rel="noopener">YouTube</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">&copy; <span id="yr">2026</span> Chandan Pandit. All rights reserved.</div>
+</footer>
+
+<script>
+// Footer year
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// Theme toggle (remembers choice; falls back safely if storage is blocked)
+(function(){
+  var root = document.documentElement, key = 'theme';
+  try { var saved = localStorage.getItem(key); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('theme').addEventListener('click', function(){
+    var dark = root.getAttribute('data-theme') === 'dark' ||
+      (!root.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+    var next = dark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem(key, next); } catch(e){}
+  });
+})();
 </script>
 </body>
 </html>
